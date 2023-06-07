@@ -4,11 +4,8 @@ data "aws_ami" "centos" {
   name_regex       = "Centos-8-DevOps-Practice"
 }
 
-variable "instance_type" {
-  default = "t3.micro"
-}
 output "instance" {
-  value = var.instance_type
+  value = var.instance
 }
 
 output "AMI_ID" {
@@ -17,7 +14,7 @@ output "AMI_ID" {
 
 resource "aws_instance" "frontend" {
   ami           = data.aws_ami.centos.id
-  instance_type = var.instance_type
+  instance_type = var.instance
 
   tags = {
     Name = "frontend"
