@@ -3,12 +3,19 @@ data "aws_ami" "centos" {
   most_recent      = true
   name_regex       = "Centos-8-DevOps-Practice"
 }
+
 data "aws_security_group" "allow_all" {
   name = "allow-all"
  }
+
+variable "instance" {
+  default = "t3.micro"
+}
+
 variable "components" {
   default = ["frontend","cart","user","shipping","mogodb","catalogue","payment","reddis","rabbitmq","mysql"]
 }
+
 resource "aws_instance" "instance" {
   count         = length(var.components)
   ami           = data.aws_ami.centos.id
