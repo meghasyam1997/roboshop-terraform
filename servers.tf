@@ -3,10 +3,13 @@ data "aws_ami" "centos" {
   most_recent      = true
   name_regex       = "Centos-8-DevOps-Practice"
 }
-
+data "aws_security_group" "allow_all" {
+  name = "allow-all"
+ }
 resource "aws_instance" "frontend" {
   ami           = data.aws_ami.centos.id
   instance_type = var.instance
+  vpc_security_group_ids = [data.aws_security_group.allow_all.id]
 
   tags = {
     Name = "frontend"
