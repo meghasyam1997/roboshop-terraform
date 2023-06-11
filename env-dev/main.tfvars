@@ -6,6 +6,7 @@ components = {
     payment = {
       name = "payment"
       instance_type = "t3.micro"
+      password = "roboshop123"
     }
     redis = {
       name = "redis"
@@ -14,6 +15,7 @@ components = {
     rabbitmq = {
       name = "rabbitmq"
       instance_type = "t3.micro"
+      password = "roboshop123"
     }
     user = {
       name = "user"
@@ -30,10 +32,12 @@ components = {
     shipping = {
       name = "shipping"
       instance_type = "t3.micro"
+      password = "RoboShop@1"
     }
     mysql = {
       name = "mysql"
       instance_type = "t3.micro"
+      password = "RoboShop@1"
     }
     mongodb = {
       name = "mongodb"
