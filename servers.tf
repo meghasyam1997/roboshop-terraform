@@ -1,8 +1,8 @@
 module "server" {
   for_each = var.components
   source = "./module"
-  components_name = var.components[each.value["name"]]
+  components_name = each.value["name"]
   env = var.env
-  instance_type = var.components[each.value["instance"]]
+  instance_type = each.value["instance_type"]
   password =lookup(each.value,"password","null")
 }
