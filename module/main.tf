@@ -18,10 +18,10 @@ resource "null_resource" "provisioner" {
       host = aws_instance.instance.private_ip
     }
 
-    inline = var.app_type == "db" ? local.db_command:local.app_command
+    inline = var.app_type == "db" ? local.db_command : local.app_command
   }
-
 }
+
 resource "aws_route53_record" "records" {
   zone_id = "Z06713411IASYL5XZHSG8"
   name    = "${var.components_name}-dev.msdevops72.online"
