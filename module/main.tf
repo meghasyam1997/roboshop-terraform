@@ -64,23 +64,21 @@ resource "aws_iam_role_policy" "ssm-ps-policy" {
   policy = jsonencode({
     "Version": "2012-10-17",
     "Statement": [
-  {
-    "Sid": "VisualEditor0",
-    "Effect": "Allow",
-    "Action": [
-    "ssm:GetParameterHistory",
-    "ssm:GetParametersByPath",
-    "ssm:GetParameters",
-    "ssm:GetParameter"
-  ],
-    "Resource": "arn:aws:ssm:us-east-1:844746520101:parameter/${var.env}.${var.components_name}.*"
-  },
-  {
-    "Sid": "VisualEditor1",
-    "Effect": "Allow",
-    "Action": "ssm:DescribeParameters",
-    "Resource": "*"
-  }
-  ]
+      {
+        "Sid": "VisualEditor0",
+        "Effect": "Allow",
+        "Action": [
+          "kms:Decrypt",
+          "ssm:GetParameterHistory",
+          "ssm:GetParametersByPath",
+          "ssm:GetParameters",
+          "ssm:GetParameter"
+        ],
+        "Resource": [
+          "arn:aws:ssm:us-east-1:844746520101:parameter/${var.env}.${var.components_name}.*",
+          "arn:aws:kms:us-east-1:844746520101:key/f2e4231a-4405-4fcc-9d18-bb7c5e81348f"
+        ]
+      }
+    ]
   })
 }
