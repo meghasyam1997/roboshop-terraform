@@ -4,11 +4,10 @@ resource "aws_instance" "instance"{
   vpc_security_group_ids = [data.aws_security_group.allow_all.id]
 
   tags = {
-    Name = var.components_name
+    Name = local.name
   }
 }
 resource "null_resource" "provisioner" {
-  count = var.provisioner ? 1:0
   depends_on = [aws_instance.instance,aws_route53_record.records]
   provisioner "remote-exec" {
 
@@ -19,12 +18,7 @@ resource "null_resource" "provisioner" {
       host = aws_instance.instance.private_ip
     }
 
-    inline = [
-      "rm -rf roboshop-shell",
-      "git clone https://github.com/meghasyam1997/roboshop-shell.git",
-      "cd roboshop-shell",
-      "sudo bash ${var.components_name}.sh ${var.password}"
-    ]
+    inline = var.app_type == "db" ? local.db_command:local.app_commands
   }
 
 }
