@@ -18,7 +18,7 @@ resource "null_resource" "provisioner" {
       host = aws_instance.instance.private_ip
     }
 
-    inline = var.app_type == "db" ? local.db_command:local.app_commands
+    inline = var.app_type == "db" ? local.db_command:local.app_command
   }
 
 }
