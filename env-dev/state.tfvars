@@ -1,3 +1,3 @@
 bucket = "megha-roboshop"
-key    = "roboshop/dev/terraform.tfstate"
+key    = "dev/roboshop/terraform.tfstate"
 region = "us-east-1"
