@@ -1,3 +1,3 @@
-bucket = "terrafrom-syam"
-key    = "roboshop/dev/terrafrom.tfstate"
+bucket = "megha-roboshop"
+key    = "roboshop/dev/terraform.tfstate"
 region = "us-east-1"
