@@ -21,7 +21,7 @@ resource "null_resource" "provisioner" {
 }
 
 resource "aws_route53_record" "records" {
-  zone_id = "Z06713411IASYL5XZHSG8"
+  zone_id = "Z0620294274OZE1BA7710"
   name    = "${var.components_name}-dev.msdevops72.online"
   type    = "A"
   ttl     = 30
